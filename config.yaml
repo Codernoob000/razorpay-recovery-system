@@ -1,0 +1,34 @@
+﻿# AI Revenue Recovery Platform - Baseline Recovery Policy
+# All time values are in minutes unless otherwise noted.
+
+recovery_policy:
+  max_retries: 3
+
+  # Action when a payment is flagged as high-risk / needs human review
+  risk_hold_action: "escalate_to_human"
+
+  discount_eligibility:
+    min_tier: "enterprise"   # Minimum customer tier to receive a discount offer
+    max_pct: 15              # Maximum discount percentage (0-100)
+
+  retry_delays:
+    soft_decline_min: 60       # Delay before retrying a soft decline (e.g. insufficient funds)
+    technical_failure_min: 15  # Delay before retrying a technical/gateway failure
+
+  # Ordered list of retry strategies per decline type
+  retry_strategies:
+    soft_decline:
+      - "retry_same_method"
+      - "offer_emi"
+      - "offer_discount"
+    hard_decline:
+      - "escalate_to_human"
+    technical_failure:
+      - "retry_same_method"
+      - "retry_alternate_gateway"
+
+  # Customer tier priority (affects retry aggressiveness)
+  tier_priority:
+    enterprise: 3
+    business: 2
+    starter: 1

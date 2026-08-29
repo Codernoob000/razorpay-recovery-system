@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Escalations Queue - RECOVER_AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#565e74",
+                      "on-secondary-fixed": "#00201d",
+                      "tertiary-fixed-dim": "#dec29a",
+                      "error": "#ba1a1a",
+                      "primary": "#000000",
+                      "on-secondary-container": "#006f66",
+                      "tertiary-fixed": "#fcdeb5",
+                      "inverse-primary": "#bec6e0",
+                      "surface-dim": "#dcd9db",
+                      "on-secondary-fixed-variant": "#005049",
+                      "on-primary-fixed": "#131b2e",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed": "#89f5e7",
+                      "on-tertiary-fixed": "#271901",
+                      "primary-fixed": "#dae2fd",
+                      "on-surface": "#1b1b1d",
+                      "on-tertiary-container": "#98805d",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-error": "#ffffff",
+                      "surface-container": "#f0edef",
+                      "primary-fixed-dim": "#bec6e0",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-bright": "#fcf8fa",
+                      "on-surface-variant": "#45464d",
+                      "on-background": "#1b1b1d",
+                      "surface-variant": "#e4e2e4",
+                      "inverse-on-surface": "#f3f0f2",
+                      "secondary-container": "#86f2e4",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#eae7e9",
+                      "background": "#fcf8fa",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#006a61",
+                      "primary-container": "#131b2e",
+                      "surface-container-low": "#f6f3f5",
+                      "secondary-fixed-dim": "#6bd8cb",
+                      "on-primary-container": "#7c839b",
+                      "surface": "#fcf8fa",
+                      "outline-variant": "#c6c6cd",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "tertiary-container": "#271901",
+                      "tertiary": "#000000",
+                      "outline": "#76777d",
+                      "inverse-surface": "#303032"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "element-gap": "16px",
+                      "container-padding": "32px",
+                      "unit": "4px",
+                      "sidebar-width": "260px",
+                      "grid-gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-uppercase": [
+                              "Inter"
+                      ],
+                      "numeric-data": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-uppercase": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "numeric-data": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fcf8fa; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c6c6cd; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #76777d; 
+        }
+        
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.fill-icon {
+           font-variation-settings:
+          'FILL' 1,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex">
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="w-sidebar h-screen fixed left-0 top-0 bg-primary-container dark:bg-primary-container z-50 flex flex-col w-[260px] h-full shadow-[0_0_0_1px_rgba(0,0,0,0.05)] md:shadow-none transition-transform duration-300 -translate-x-full md:translate-x-0" id="sidebar">
+<div class="h-16 flex items-center px-6 mb-4">
+<span class="font-headline-md text-headline-md text-on-primary-fixed tracking-tight">RECOVER_AI</span>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<!-- Overview: Inactive -->
+<a class="flex items-center gap-3 text-on-primary-container/70 pl-5 py-3 hover:bg-on-primary-fixed/5 hover:text-on-primary-fixed transition-colors duration-200 ease-in-out rounded-lg group" href="/ui/overview.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary-fixed">dashboard</span>
+<span class="font-body-sm text-body-sm">Overview</span>
+</a>
+<!-- Audit Trace: Inactive -->
+<a class="flex items-center gap-3 text-on-primary-container/70 pl-5 py-3 hover:bg-on-primary-fixed/5 hover:text-on-primary-fixed transition-colors duration-200 ease-in-out rounded-lg group" href="/ui/trace.html">
+<span class="material-symbols-outlined text-[20px] group-hover:text-on-primary-fixed">history_toggle_off</span>
+<span class="font-body-sm text-body-sm">Audit Trace</span>
+</a>
+<!-- Escalations: Active -->
+<a class="flex items-center gap-3 text-secondary-fixed-dim font-bold border-l-4 border-secondary-fixed-dim pl-4 py-3 bg-on-primary-fixed/10 duration-200 ease-in-out rounded-r-lg" href="/ui/escalations.html">
+<span class="material-symbols-outlined text-[20px]">emergency_home</span>
+<span class="font-body-sm text-body-sm">Escalations</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-sm">
+                    OP
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-primary-container font-medium">Ops Manager</span>
+<span class="text-[11px] text-on-primary-container/60">admin@recover.ai</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-[260px] flex flex-col min-h-screen relative w-full">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim full-width sticky top-0 z-40 border-b border-outline-variant flex justify-between items-center h-16 px-container-padding">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant hover:text-primary transition-opacity active:opacity-70" id="mobile-menu-btn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim flex items-center gap-3">
+                    Escalations Queue
+                    <span id="escalations-open-count" class="inline-flex items-center justify-center px-2 py-1 rounded-full bg-error-container text-on-error-container font-label-uppercase text-label-uppercase">— Open</span>
+</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-opacity active:opacity-70 font-body-sm text-body-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export Data
+                </button>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 p-4 md:p-container-padding max-w-[1440px] mx-auto w-full">
+<!-- Controls / Filters -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+<div class="flex items-center gap-2 bg-surface-container p-1 rounded-lg border border-outline-variant/30">
+<button class="px-4 py-1.5 bg-surface text-on-surface font-body-sm text-body-sm rounded shadow-sm font-medium border border-outline-variant/20">All Active</button>
+<button class="px-4 py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface/50 font-body-sm text-body-sm rounded transition-colors">Requires Action</button>
+<button class="px-4 py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface/50 font-body-sm text-body-sm rounded transition-colors">Snoozed</button>
+</div>
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input id="escalations-search" class="w-full pl-9 pr-4 py-2 bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary outline-none font-body-sm text-body-sm transition-all text-on-surface placeholder:text-outline" placeholder="Search TXN ID..." type="text"/>
+</div>
+</div>
+<!-- Escalation Categories Accordion -->
+<div id="escalations-container" class="space-y-6">
+<!-- Risk Hold Section -->
+<div class="bg-surface rounded-xl border border-outline-variant overflow-hidden group">
+<button class="w-full flex items-center justify-between p-4 bg-surface hover:bg-surface-container-lowest transition-colors text-left border-b border-outline-variant/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">warning</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Risk Hold</h2>
+<span class="bg-tertiary-container/10 text-tertiary-container px-2 py-0.5 rounded-full font-label-uppercase text-label-uppercase ml-2">4 Items</span>
+</div>
+<span class="material-symbols-outlined text-outline transition-transform duration-200 group-hover:text-on-surface">expand_more</span>
+</button>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead class="bg-surface-container-lowest border-b border-outline-variant/30">
+<tr>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Transaction ID</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Customer Tier</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Amount</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Escalated At</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr class="hover:bg-slate-100/50 transition-colors group/row">
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface">TXN-1045</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container/20 text-secondary font-label-uppercase text-[10px]">Enterprise</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface font-medium">₹ 12,450.00</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface-variant">Today, 10:23 AM</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary font-body-sm text-body-sm font-medium hover:underline opacity-0 group-hover/row:opacity-100 transition-opacity">View Trace</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-100/50 transition-colors group/row">
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface">TXN-1082</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-container-highest text-on-surface font-label-uppercase text-[10px]">Business</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface font-medium">₹ 4,200.50</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface-variant">Today, 09:15 AM</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary font-body-sm text-body-sm font-medium hover:underline opacity-0 group-hover/row:opacity-100 transition-opacity">View Trace</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-100/50 transition-colors group/row">
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface">TXN-0992</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container/20 text-secondary font-label-uppercase text-[10px]">Enterprise</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface font-medium">₹ 45,000.00</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface-variant">Yesterday, 16:45 PM</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary font-body-sm text-body-sm font-medium hover:underline opacity-0 group-hover/row:opacity-100 transition-opacity">View Trace</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-100/50 transition-colors group/row">
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface">TXN-0985</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-container-highest text-on-surface font-label-uppercase text-[10px]">Business</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface font-medium">₹ 8,150.00</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface-variant">Yesterday, 14:20 PM</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary font-body-sm text-body-sm font-medium hover:underline opacity-0 group-hover/row:opacity-100 transition-opacity">View Trace</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Max Retries Exceeded Section -->
+<div class="bg-surface rounded-xl border border-outline-variant overflow-hidden group">
+<button class="w-full flex items-center justify-between p-4 bg-surface hover:bg-surface-container-lowest transition-colors text-left border-b border-outline-variant/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-surface-tint text-[20px]">sync_problem</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Max Retries Exceeded</h2>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full font-label-uppercase text-label-uppercase ml-2">6 Items</span>
+</div>
+<span class="material-symbols-outlined text-outline transition-transform duration-200 group-hover:text-on-surface">expand_more</span>
+</button>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead class="bg-surface-container-lowest border-b border-outline-variant/30">
+<tr>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Transaction ID</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Customer Tier</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Amount</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Escalated At</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr class="hover:bg-slate-100/50 transition-colors group/row">
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface">TXN-1012</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-container-highest text-on-surface font-label-uppercase text-[10px]">Standard</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface font-medium">₹ 1,200.00</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface-variant">Today, 08:05 AM</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary font-body-sm text-body-sm font-medium hover:underline opacity-0 group-hover/row:opacity-100 transition-opacity">View Trace</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-100/50 transition-colors group/row">
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface">TXN-0955</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-container-highest text-on-surface font-label-uppercase text-[10px]">Business</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface font-medium">₹ 3,450.00</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface-variant">Yesterday, 11:30 AM</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary font-body-sm text-body-sm font-medium hover:underline opacity-0 group-hover/row:opacity-100 transition-opacity">View Trace</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-3 text-center border-t border-outline-variant/20">
+<button class="text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm transition-colors">View 4 more...</button>
+</div>
+</div>
+</div>
+<!-- Diagnosis Failure Section -->
+<div class="bg-surface rounded-xl border border-outline-variant overflow-hidden group">
+<button class="w-full flex items-center justify-between p-4 bg-surface hover:bg-surface-container-lowest transition-colors text-left border-b border-outline-variant/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-surface-tint text-[20px]">bug_report</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Diagnosis Failure</h2>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full font-label-uppercase text-label-uppercase ml-2">2 Items</span>
+</div>
+<span class="material-symbols-outlined text-outline transition-transform duration-200 group-hover:text-on-surface">expand_more</span>
+</button>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead class="bg-surface-container-lowest border-b border-outline-variant/30">
+<tr>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Transaction ID</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Customer Tier</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Amount</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5">Escalated At</th>
+<th class="px-4 py-3 font-label-uppercase text-label-uppercase text-on-surface-variant w-1/5 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr class="hover:bg-slate-100/50 transition-colors group/row">
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface">TXN-0812</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container/20 text-secondary font-label-uppercase text-[10px]">Enterprise</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface font-medium">₹ 112,000.00</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface-variant">Nov 12, 14:00 PM</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary font-body-sm text-body-sm font-medium hover:underline opacity-0 group-hover/row:opacity-100 transition-opacity">View Trace</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-100/50 transition-colors group/row">
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface">TXN-0790</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-1 rounded bg-surface-container-highest text-on-surface font-label-uppercase text-[10px]">Standard</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface font-medium">₹ 850.00</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-on-surface-variant">Nov 11, 09:45 AM</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary font-body-sm text-body-sm font-medium hover:underline opacity-0 group-hover/row:opacity-100 transition-opacity">View Trace</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Empty State (shown when exceptions list is empty) -->
+<div id="escalations-empty-state" class="hidden bg-surface rounded-xl border border-outline-variant p-12 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-outline/50 text-[48px] mb-4">check_circle</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">No open escalations</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">All automated recovery processes are functioning normally. There are currently no exceptions requiring manual intervention.</p>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Simple mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        
+        if(mobileBtn && sidebar) {
+            mobileBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+        }
+    </script>
+<script src="/ui/js/api-client.js"></script>
+<script src="/ui/js/escalations.js"></script>
+</body></html>

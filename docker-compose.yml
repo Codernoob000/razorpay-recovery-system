@@ -1,0 +1,19 @@
+services:
+  recovery-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: recovery-platform
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=sqlite:////app/data/recovery.db
+    volumes:
+      - recovery-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  recovery-data:
+    driver: local

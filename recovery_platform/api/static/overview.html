@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Revenue Recovery - Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1b1b1d",
+                        "surface-variant": "#e4e2e4",
+                        "on-primary-container": "#7c839b",
+                        "on-tertiary-fixed": "#271901",
+                        "surface-bright": "#fcf8fa",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "outline": "#76777d",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary-fixed-variant": "#005049",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container-high": "#eae7e9",
+                        "primary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "primary-container": "#131b2e",
+                        "surface": "#fcf8fa",
+                        "secondary-container": "#86f2e4",
+                        "surface-dim": "#dcd9db",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed": "#00201d",
+                        "secondary-fixed": "#89f5e7",
+                        "on-error-container": "#93000a",
+                        "background": "#fcf8fa",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-surface": "#1b1b1d",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#006f66",
+                        "tertiary-container": "#271901",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "surface-tint": "#565e74",
+                        "inverse-surface": "#303032",
+                        "on-tertiary-container": "#98805d",
+                        "secondary": "#006a61",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary-fixed": "#dae2fd",
+                        "inverse-on-surface": "#f3f0f2",
+                        "surface-container": "#f0edef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "260px",
+                        "element-gap": "16px",
+                        "container-padding": "32px",
+                        "grid-gutter": "24px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-uppercase": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "numeric-data": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-uppercase": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "numeric-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for data tables */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex">
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="bg-primary-container text-on-primary-container fixed left-0 top-0 h-full w-sidebar-width flex flex-col gap-1 p-4 w-sidebar-width h-screen hidden md:flex border-r border-outline-variant z-50">
+<div class="mb-8 mt-2 px-3">
+<h2 class="font-display-lg text-display-lg text-on-primary-container">Menu</h2>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-secondary-fixed bg-on-primary-fixed-variant font-semibold hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all Active: translate-x-1 duration-200" href="/ui/overview.html">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container opacity-70 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all Active: translate-x-1 duration-200" href="/ui/trace.html">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Audit Trace Inspector</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container opacity-70 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all Active: translate-x-1 duration-200" href="/ui/escalations.html">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="font-body-md text-body-md">Escalations Queue</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-[260px] min-w-0 transition-all duration-300 relative">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-low border-b border-outline-variant dark:border-outline flat no shadows docked full-width top-0 sticky z-40 flex justify-between items-center px-4 md:px-container-padding h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high transition-colors active:opacity-80 transition-opacity p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">AI Revenue Recovery</h1>
+</div>
+<div>
+<button id="run-cycle-btn" class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-numeric-data text-numeric-data shadow-sm hover:bg-on-secondary-container transition-colors flex items-center gap-2">
+<span class="hidden sm:inline">Run Recovery Cycle</span>
+<span class="material-symbols-outlined sm:hidden">play_arrow</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 p-4 md:p-container-padding overflow-y-auto max-w-[1440px] mx-auto w-full">
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-element-gap mb-grid-gutter">
+<!-- KPI Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between h-32 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant uppercase tracking-wider">Recovery Rate</span>
+<span class="material-symbols-outlined text-outline">trending_up</span>
+</div>
+<div>
+<div id="kpi-recovery-rate" class="font-headline-md text-headline-md text-on-background mb-1">—</div>
+<div class="flex items-center text-[#15803d] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] mr-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+<span>Live from database</span>
+</div>
+</div>
+</div>
+<!-- KPI Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between h-32 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant uppercase tracking-wider">Total Recovered</span>
+<span class="material-symbols-outlined text-outline">payments</span>
+</div>
+<div>
+<div id="kpi-total-recovered" class="font-headline-md text-headline-md text-on-background mb-1">—</div>
+<div class="flex items-center text-[#15803d] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] mr-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+<span>Live from database</span>
+</div>
+</div>
+</div>
+<!-- KPI Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between h-32 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant uppercase tracking-wider">Total At Risk</span>
+<span class="material-symbols-outlined text-outline">warning</span>
+</div>
+<div>
+<div id="kpi-total-at-risk" class="font-headline-md text-headline-md text-on-background mb-1">—</div>
+<div class="flex items-center text-[#b91c1c] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] mr-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+<span>Live from database</span>
+</div>
+</div>
+</div>
+<!-- KPI Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between h-32 hover:bg-surface-container-low transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant uppercase tracking-wider">Mean Time to Recovery</span>
+<span class="material-symbols-outlined text-outline">timer</span>
+</div>
+<div>
+<div id="kpi-mtr" class="font-headline-md text-headline-md text-on-background mb-1">—</div>
+<div class="flex items-center text-[#15803d] font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] mr-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">arrow_downward</span>
+<span>Live from database</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Complex Layout Section: Status Breakdown & Secondary Stats -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-element-gap mb-grid-gutter">
+<!-- Status Breakdown (Bento Style) -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-6">Status Breakdown</h3>
+<!-- Horizontal Bar Chart Representation -->
+<div class="w-full h-8 flex rounded-full overflow-hidden mb-4">
+<div id="status-bar-recovered"     class="bg-[#15803d] h-full" style="width: 0%;"></div>
+<div id="status-bar-escalated"     class="bg-[#b91c1c] h-full" style="width: 0%;"></div>
+<div id="status-bar-pending-retry" class="bg-[#eab308] h-full" style="width: 0%;"></div>
+<div id="status-bar-abandoned"     class="bg-surface-tint h-full" style="width: 0%;"></div>
+</div>
+<!-- Legend -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<div class="w-3 h-3 rounded-full bg-[#15803d]"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Recovered</span>
+</div>
+<div id="legend-recovered" class="font-numeric-data text-numeric-data">—</div>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<div class="w-3 h-3 rounded-full bg-[#b91c1c]"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Escalated</span>
+</div>
+<div id="legend-escalated" class="font-numeric-data text-numeric-data">—</div>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<div class="w-3 h-3 rounded-full bg-[#eab308]"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pending Retry</span>
+</div>
+<div id="legend-pending-retry" class="font-numeric-data text-numeric-data">—</div>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<div class="w-3 h-3 rounded-full bg-surface-tint"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Abandoned</span>
+</div>
+<div id="legend-abandoned" class="font-numeric-data text-numeric-data">—</div>
+</div>
+</div>
+</div>
+<!-- Secondary Stats & Filters -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-4">Processing Volume</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center p-3 bg-surface-container-low rounded-lg">
+<span class="font-body-md text-body-md text-on-surface-variant">Records Processed</span>
+<span id="stat-records-processed" class="font-numeric-data text-numeric-data font-bold">—</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-surface-container-low rounded-lg border-l-4 border-l-[#b91c1c]">
+<span class="font-body-md text-body-md text-on-surface-variant">Escalated Count</span>
+<span id="stat-escalated-count" class="font-numeric-data text-numeric-data font-bold">—</span>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant">
+<div class="flex gap-2">
+<button class="flex-1 py-1 px-2 rounded bg-surface-container-highest text-on-surface-variant font-label-uppercase text-label-uppercase text-[10px]">24H</button>
+<button class="flex-1 py-1 px-2 rounded bg-primary text-on-primary font-label-uppercase text-label-uppercase text-[10px]">7D</button>
+<button class="flex-1 py-1 px-2 rounded bg-surface-container-highest text-on-surface-variant font-label-uppercase text-label-uppercase text-[10px]">30D</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Transactions Data Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-background">Recent Transactions</h3>
+<div class="flex gap-2 items-center">
+<!-- Filter selects -->
+<select id="filter-status" class="text-sm border border-outline-variant rounded-lg px-2 py-1.5 bg-surface-container-lowest text-on-surface-variant focus:ring-2 focus:ring-secondary outline-none">
+  <option value="">All Statuses</option>
+  <option value="recovered">Recovered</option>
+  <option value="escalated">Escalated</option>
+  <option value="pending_retry">Pending Retry</option>
+  <option value="failed">Failed</option>
+  <option value="abandoned">Abandoned</option>
+</select>
+<select id="filter-tier" class="text-sm border border-outline-variant rounded-lg px-2 py-1.5 bg-surface-container-lowest text-on-surface-variant focus:ring-2 focus:ring-secondary outline-none hidden sm:block">
+  <option value="">All Tiers</option>
+  <option value="enterprise">Enterprise</option>
+  <option value="business">Business</option>
+  <option value="standard">Standard</option>
+</select>
+<select id="filter-failure-code" class="text-sm border border-outline-variant rounded-lg px-2 py-1.5 bg-surface-container-lowest text-on-surface-variant focus:ring-2 focus:ring-secondary outline-none hidden sm:block">
+  <option value="">All Failure Codes</option>
+  <option value="INSUFFICIENT_FUNDS">INSUFFICIENT_FUNDS</option>
+  <option value="AUTH_FAILURE">AUTH_FAILURE</option>
+  <option value="CARD_DECLINED">CARD_DECLINED</option>
+  <option value="NETWORK_TIMEOUT">NETWORK_TIMEOUT</option>
+  <option value="RISK_HOLD">RISK_HOLD</option>
+</select>
+<button class="p-1.5 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low font-label-uppercase text-label-uppercase text-on-surface-variant uppercase sticky top-0">
+<tr>
+<th class="px-4 py-3 font-medium whitespace-nowrap">Transaction ID</th>
+<th class="px-4 py-3 font-medium whitespace-nowrap">Customer Tier</th>
+<th class="px-4 py-3 font-medium whitespace-nowrap text-right">Amount</th>
+<th class="px-4 py-3 font-medium whitespace-nowrap">Status</th>
+<th class="px-4 py-3 font-medium whitespace-nowrap">Failure Code</th>
+<th class="px-4 py-3 font-medium whitespace-nowrap">Created At</th>
+<th class="px-4 py-3 font-medium whitespace-nowrap"></th>
+</tr>
+</thead>
+<tbody id="transactions-tbody" class="font-body-sm text-body-sm divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-3 font-numeric-data text-numeric-data">TXN-9021</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#1e40af]/10 text-[#1e40af]">Business</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-right">₹12,400</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#15803d]/10 text-[#15803d]">Recovered</span>
+</td>
+<td class="px-4 py-3 font-mono text-[11px] text-on-surface-variant">INS_FUNDS</td>
+<td class="px-4 py-3 text-on-surface-variant whitespace-nowrap">Oct 24, 10:42</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary opacity-0 group-hover:opacity-100 transition-opacity font-label-uppercase text-label-uppercase">View</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-3 font-numeric-data text-numeric-data">TXN-9022</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-surface-tint/10 text-surface-tint">Standard</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-right">₹4,200</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#b91c1c]/10 text-[#b91c1c]">Escalated</span>
+</td>
+<td class="px-4 py-3 font-mono text-[11px] text-on-surface-variant">AUTH_FAIL</td>
+<td class="px-4 py-3 text-on-surface-variant whitespace-nowrap">Oct 24, 09:15</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary opacity-0 group-hover:opacity-100 transition-opacity font-label-uppercase text-label-uppercase">View</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-3 font-numeric-data text-numeric-data">TXN-9023</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#9333ea]/10 text-[#9333ea]">Enterprise</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-right">₹85,000</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#eab308]/10 text-[#b45309]">Pending Retry</span>
+</td>
+<td class="px-4 py-3 font-mono text-[11px] text-on-surface-variant">NET_TIMEOUT</td>
+<td class="px-4 py-3 text-on-surface-variant whitespace-nowrap">Oct 23, 16:30</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary opacity-0 group-hover:opacity-100 transition-opacity font-label-uppercase text-label-uppercase">View</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-4 py-3 font-numeric-data text-numeric-data">TXN-9024</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-surface-tint/10 text-surface-tint">Standard</span>
+</td>
+<td class="px-4 py-3 font-numeric-data text-numeric-data text-right">₹1,500</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-surface-variant text-on-surface-variant">Abandoned</span>
+</td>
+<td class="px-4 py-3 font-mono text-[11px] text-on-surface-variant">CARD_EXP</td>
+<td class="px-4 py-3 text-on-surface-variant whitespace-nowrap">Oct 23, 14:12</td>
+<td class="px-4 py-3 text-right">
+<button class="text-secondary opacity-0 group-hover:opacity-100 transition-opacity font-label-uppercase text-label-uppercase">View</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- Toast notification container -->
+<div id="toast-container" class="fixed bottom-4 right-4 flex flex-col gap-2 z-50"></div>
+<script src="/ui/js/api-client.js"></script>
+<script src="/ui/js/overview.js"></script>
+</body></html>
