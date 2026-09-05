@@ -456,6 +456,12 @@ def list_transactions(
 # ---------------------------------------------------------------------------
 
 
+@app.get("/", include_in_schema=False)
+def root_redirect() -> RedirectResponse:
+    """Redirect bare / to the dashboard overview page."""
+    return RedirectResponse(url="/ui/overview.html")
+
+
 @app.get("/ui", include_in_schema=False)
 def ui_root() -> RedirectResponse:
     """Redirect bare /ui to the overview page."""

@@ -99,34 +99,33 @@
             }
         }
     </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
 <body class="bg-background text-on-background font-body-md h-screen flex overflow-hidden">
-<!-- Navigation Drawer -->
-<nav class="hidden md:flex flex-col h-full py-container-padding w-[260px] bg-primary-container text-secondary-fixed font-body-md text-body-md shrink-0 border-r border-outline-variant fixed left-0 top-0">
-<div class="px-container-padding mb-8">
-<h1 class="font-headline-sm text-headline-sm text-on-primary-fixed">AI Revenue Recovery</h1>
+<!-- NavigationDrawer (Sidebar) -->
+<aside class="bg-primary-container text-on-primary-container fixed left-0 top-0 h-full w-sidebar-width flex flex-col gap-1 p-4 w-sidebar-width h-screen hidden md:flex border-r border-outline-variant z-50">
+<div class="mb-8 mt-2 px-3">
+<h2 class="font-display-lg text-display-lg text-on-primary-container">Menu</h2>
 </div>
-<ul class="flex flex-col gap-1 px-4">
-<li>
-<a class="flex items-center gap-unit text-on-primary-container opacity-80 px-4 py-2 hover:bg-on-primary-fixed-variant hover:text-secondary-fixed transition-colors active:scale-95 transition-transform" href="/ui/overview.html">
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container opacity-70 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-200" href="/ui/overview.html">
 <span class="material-symbols-outlined">dashboard</span>
-<span>Overview</span>
+<span class="font-body-md text-body-md">Overview</span>
 </a>
-</li>
-<li>
-<a class="flex items-center gap-unit bg-on-primary-fixed-variant text-secondary-fixed rounded-xl px-4 py-2 hover:bg-on-primary-fixed-variant hover:text-secondary-fixed transition-colors active:scale-95 transition-transform" href="/ui/trace.html">
-<span class="material-symbols-outlined">troubleshoot</span>
-<span>Audit Trace Inspector</span>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-secondary-fixed bg-on-primary-fixed-variant font-semibold hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-200" href="/ui/trace.html">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-body-md text-body-md">Audit Trace Inspector</span>
 </a>
-</li>
-<li>
-<a class="flex items-center gap-unit text-on-primary-container opacity-80 px-4 py-2 hover:bg-on-primary-fixed-variant hover:text-secondary-fixed transition-colors active:scale-95 transition-transform" href="/ui/escalations.html">
-<span class="material-symbols-outlined">priority_high</span>
-<span>Escalations Queue</span>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-primary-container opacity-70 hover:bg-on-primary-fixed-variant hover:opacity-100 transition-all duration-200" href="/ui/escalations.html">
+<span class="material-symbols-outlined">assignment_late</span>
+<span class="font-body-md text-body-md">Escalations Queue</span>
 </a>
-</li>
-</ul>
 </nav>
+</aside>
 <!-- Main Content Area -->
 <div class="flex-1 flex flex-col md:ml-[260px] h-full overflow-hidden bg-background">
 <!-- Top App Bar -->
